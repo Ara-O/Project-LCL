@@ -8,16 +8,27 @@
   font-family: "Poppins";
   color-scheme: light dark;
   color: white;
-   /* background:  url("./assets/stars.png"), linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%); */
-      background:  linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%);
-   /* background-size: 220vw 100vw ; */
+   background: linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%);
+      /* background:  linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  height: auto;
   -webkit-text-size-adjust: 100%;
 }
 
+:root::after{
+  content: "";
+  top: 0;
+  position: absolute;
+  width: 98vw;
+  height: 100vh;
+  background-image: url("./assets/stars6.png");
+  background-size: 30vw;
+  z-index:-9;
+}
 
 a {
   font-weight: 500;
@@ -74,11 +85,63 @@ button:focus-visible {
 }
 
 #app {
-  max-width: 1082px;
+  max-width: 1010px;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
+body{
+  cursor: none;
+}
+/* 
+.cursor{
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.rounded{
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.pointed{
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border-radius: 50%;
+} */
+[class^="cursor"]{
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+.cursor-outer{
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fff;
+  transition: all .08s ease-out;
+}
+.cursor-inner{
+  width: 7px;
+  height: 7px;
+  background: #fff;
+}
+.content:hover ~ .cursor-outer{
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+.content:hover ~ .cursor-inner{
+  opacity: 0;
+}
 @media (prefers-color-scheme: light) {
   /* :root {
     color: #213547;
@@ -91,3 +154,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   } */
 }
+

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+    <nav class="navbar">
     <h5>Home</h5>
     <h5>Resources</h5>
     <h5>Learn More</h5>
@@ -9,65 +9,56 @@
   <section class="top-hero-section">
     <div class="top-hero-section_left">
       <h3>Start your Command Line learning adventure</h3>
+      <h5>Are you to become a command line bawse?</h5>
       <main-btn>Get Started</main-btn>
     </div>
     <div class="top-hero-section_right">
-      <div class="welcome-code-popup"></div>
+      <div class="welcome-code-section">
+        <div class="welcome-code-icon-1"></div>
+        <div class="welcome-code-icon-2"></div>
+        <div class="welcome-code-icon-3"></div>
+        <div class="welcome-typing-text">
+          <h5 id="element"></h5>
+          <Transition name="fade-out">
+            <h5 v-if="typingJsComplete" class="welcome-code-explanation">
+              > You find yourseld in a mysterious world. It seems like you have
+              been transported to a computer file system. Tasked with finding a
+              mysterious virus wreaking havoc in the world of
+              <span style="color: #cd8cff">WindowTopia</span>, are you going to
+              be able to stop the virus before it is too late...
+            </h5>
+          </Transition>
+        </div>
+      </div>
     </div>
+  </section>
+  <br>
+  <section class="about-us">
+    <h2>What are we about?</h2>
   </section>
 </template>
 
 
-<style lang="scss" scoped>
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
-}
+<script setup>
+import "../assets/styles/landingpage.scss";
+import { ref, onMounted } from "vue";
+import Typed from "typed.js";
 
-.navbar {
-  h5 {
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    font-weight: 300;
-  }
-}
+let typingJsComplete = ref(false);
 
-.bg-circle-1 {
-  height: 200px;
-  width: 200px;
-  border-radius: 121px;
-  background: linear-gradient(180deg, #330969 0%, rgba(145, 121, 176, 0) 100%);
-  position: absolute;
-  top: -11px;
-  left: -59px;
-  transform: rotate(-12deg);
-}
+onMounted(() => {
+  var options = {
+    strings: [
+      "> Welcome to the start of your <span style='color: yellow'>Command Line Learning Journey</span> ✌️",
+    ],
+    typeSpeed: 40,
+    showCursor: false,
+    onComplete() {
+      typingJsComplete.value = true;
+    },
+  };
 
-.top-hero-section {
-  display: flex;
-  justify-content: space-between;
-  height: 400px;
-  align-items: center;
-  .top-hero-section_left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    row-gap: 10px;
+  var typed = new Typed("#element", options);
 
-    h3 {
-      font-weight: 500;
-      font-size: 30px;
-      text-align: left;
-      line-height: 46px;
-      width: 400px;
-    }
-  }
-}
-
-.welcome-code-popup {
-  width: 300px;
-}
-</style>
+});
+</script>
