@@ -7,6 +7,13 @@
   "resolved" "https://registry.npmjs.org/@babel/parser/-/parser-7.18.11.tgz"
   "version" "7.18.11"
 
+"@splinetool/runtime@^0.9.106":
+  "integrity" "sha512-ivV8h1BrmJrZq1XVqXMPLn8QLpqT8zQqMRMd6v/io0TIL0F44RNcPIbaK+bAIxWlsIvdZMJH5Wqv9Cqo9FPyHw=="
+  "resolved" "https://registry.npmjs.org/@splinetool/runtime/-/runtime-0.9.106.tgz"
+  "version" "0.9.106"
+  dependencies:
+    "on-change" "^4.0.0"
+
 "@vitejs/plugin-vue@^3.0.3":
   "integrity" "sha512-U4zNBlz9mg+TA+i+5QPc3N5lQvdUXENZLO2h0Wdzp56gI1MWhqJOv+6R+d4kOzoaSSq6TnGPBdZAXKOe4lXy6g=="
   "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-3.0.3.tgz"
@@ -262,6 +269,11 @@
   "integrity" "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="
   "resolved" "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   "version" "3.0.0"
+
+"on-change@^4.0.0":
+  "integrity" "sha512-Gxmr/8NsLTigoUUEPvnAIUGl7uxwfC3Mm1G+qTmODEZcT4ZGfeaFyQgfGCdbKVS2pICIFYB82RH6MUHToPcS4Q=="
+  "resolved" "https://registry.npmjs.org/on-change/-/on-change-4.0.1.tgz"
+  "version" "4.0.1"
 
 "path-parse@^1.0.7":
   "integrity" "sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw=="

@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
 import './style.css'
 import App from './App.vue'
-import mainBtn from "./components/mainButton.vue"
+import MainBtn from "./components/Buttons/MainButton.vue"
+import WhatWeAreAboutCard from "./components/Cards/WhatWeAreAbout.vue"
 import Particles from "vue3-particles";
 const landingPage = () => import("./pages/landing_page.vue")
 
@@ -15,39 +16,19 @@ const router = createRouter({
 
 const app = createApp(App);
 (function(){
-    // import {onMounted} from 'vue';
-    // onMounted(()=> {
-    
-    //   const cursorRounded = document.querySelector('.rounded');
-    //   const cursorPointed = document.querySelector('.pointed');
-      
-    
-    //   const moveCursor = (e)=> {
-    //   const mouseY = e.clientY;
-    //   const mouseX = e.clientX;
-    
-    //   let offset = -60
-       
-    //   cursorRounded.style.transform = `translate3d(${mouseX }px, ${mouseY}px, 0)`;
-      
-    //   cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-     
-    // }
-    
-    // window.addEventListener('mousemove', moveCursor)
-    // })
     const cursor = document.querySelector(".cursor-inner");
         const cursor2 = document.querySelector(".cursor-outer");
         document.addEventListener("mousemove", e=>{
-            cursor.style.top = e.pageY + "px";
-            cursor.style.left = e.pageX + "px";
+            cursor.style.top =  e.clientY + "px";
+            cursor.style.left = e.clientX + "px";
  
-            cursor2.style.top = e.pageY + "px";
-            cursor2.style.left = e.pageX + "px";
+            cursor2.style.top =  e.clientY + "px";
+            cursor2.style.left = e.clientX  + "px";
         })
 })()
 
 
-app.component("main-btn", mainBtn)
+app.component("main-btn", MainBtn)
+app.component("what-we-are-about-card", WhatWeAreAboutCard)
 app.use(router).use(Particles).mount('#app')
 

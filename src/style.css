@@ -17,6 +17,7 @@
   position: relative;
   height: auto;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 :root::after{
@@ -25,7 +26,7 @@
   position: absolute;
   width: 98vw;
   height: 100vh;
-  background-image: url("./assets/stars6.png");
+  background-image: url("./assets/icons/starry-bg.png");
   background-size: 30vw;
   z-index:-9;
 }
@@ -54,6 +55,7 @@ a:hover {
   place-items: center;
   min-width: 320px;*/
   min-height: 100vh; 
+  padding-bottom: 100px
 }
 
 h1 {
@@ -70,11 +72,11 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  /* transition: border-color 0.25s; */
 }
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
+} */
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -91,7 +93,7 @@ button:focus-visible {
 }
 
 body{
-  cursor: none;
+  /* cursor: none; */
 }
 /* 
 .cursor{
@@ -125,7 +127,7 @@ body{
 .cursor-outer{
   width: 30px;
   height: 30px;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   transition: all .08s ease-out;
 }
 .cursor-inner{
