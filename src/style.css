@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -8,8 +7,8 @@
   font-family: "Poppins";
   color-scheme: light dark;
   color: white;
-   background: linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%);
-      /* background:  linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%); */
+  background: linear-gradient(144.52deg, #1a0535 19.89%, #0f0120 41.39%);
+  /* background:  linear-gradient(144.52deg, #1A0535 19.89%, #0F0120 82.39%); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,7 +19,7 @@
   overflow-x: hidden;
 }
 
-:root::after{
+:root::after {
   content: "";
   top: 0;
   position: absolute;
@@ -28,7 +27,7 @@
   height: 100vh;
   background-image: url("./assets/icons/starry-bg.png");
   background-size: 30vw;
-  z-index:-9;
+  z-index: -9;
 }
 
 a {
@@ -54,8 +53,8 @@ a:hover {
   /* display: flex;
   place-items: center;
   min-width: 320px;*/
-  min-height: 100vh; 
-  padding-bottom: 100px
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 h1 {
@@ -92,7 +91,7 @@ button:focus-visible {
   /* text-align: center; */
 }
 
-body{
+body {
   /* cursor: none; */
 }
 /* 
@@ -115,33 +114,33 @@ body{
   background-color: white;
   border-radius: 50%;
 } */
-[class^="cursor"]{
+[class^="cursor"] {
   position: fixed;
   top: 0;
   left: 0;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   z-index: 9999;
   pointer-events: none;
 }
-.cursor-outer{
+.cursor-outer {
   width: 30px;
   height: 30px;
   border: 2px solid #fff;
-  transition: all .08s ease-out;
+  /* transition: all 0.09s linear; */
 }
-.cursor-inner{
+.cursor-inner {
   width: 7px;
   height: 7px;
   background: #fff;
 }
-.content:hover ~ .cursor-outer{
+.content:hover ~ .cursor-outer {
   width: 90px;
   height: 90px;
   background: #fff;
   mix-blend-mode: difference;
 }
-.content:hover ~ .cursor-inner{
+.content:hover ~ .cursor-inner {
   opacity: 0;
 }
 @media (prefers-color-scheme: light) {
@@ -156,4 +155,3 @@ body{
     background-color: #f9f9f9;
   } */
 }
-

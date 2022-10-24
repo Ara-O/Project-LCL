@@ -5,7 +5,7 @@
     <h5>Home</h5>
     <h5>Resources</h5>
     <h5>Learn More</h5>
-    <main-btn>Sign Up</main-btn>
+    <main-btn @click="registerUser">Sign Up</main-btn>
   </nav>
   <section class="top-hero-section">
     <div class="top-hero-section_left">
@@ -71,17 +71,57 @@
     <main-btn class="get-started-btn">Get Started</main-btn>
     <div class="quote-shadow"></div>
   </section>
+  <section class="register-user">
+    <div class="register-user_section">
+      <div class="left">
+        <h3>Cool Beans! Let's get you learning</h3>
+        <form>
+          <label for="email-address">Email: </label>
+          <input type="text" name="" id="email-address form-field" />
+          <br /><br />
+          <label for="email-address">Password: </label>
+          <input type="text" name="" id="password form-field" />
+        </form>
+        <h6 class="already-have-account">I already have an account</h6>
+        <main-button>Sign Up</main-button>
+      </div>
+      <div class="right" id="cloud-parallax">
+        <img
+          src="../assets/icons/rocket-icon.png"
+          alt="Rocket icon"
+          class="rocket-icon"
+          data-depth="0.2"
+        />
+        <img
+          src="../assets/icons/cloud-icon.png"
+          alt="Cloud icon"
+          class="cloud-icon"
+          data-depth="0.6"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 
-
 <script setup>
+import Parallax from "parallax-js";
 import "../assets/styles/landingpage.scss";
 import { ref, onMounted } from "vue";
 import Typed from "typed.js";
-
+import mainButton from "../components/Buttons/MainButton.vue";
 let typingJsComplete = ref(false);
 
+function registerUser() {
+  console.log("start user");
+  document.querySelector(".register-user").style.display = "flex";
+  document.querySelector("html").style.overflow = "hidden";
+}
+
 onMounted(() => {
+  var scene = document.getElementById("cloud-parallax");
+  var parallaxInstance = new Parallax(scene);
+  parallaxInstance.friction(0.2, 0.2);
+
   var options = {
     strings: [
       "> Welcome to the start of your <span style='color: yellow'>Command Line Learning Journey</span> ✌️",
