@@ -1,12 +1,10 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
 import "./style.css";
 import App from "./App.vue";
 import MainBtn from "./components/Buttons/MainButton.vue";
-import WhatWeAreAboutCard from "./components/Cards/WhatWeAreAbout.vue";
-// import Particles from "vue3-particles";
-const landingPage = () => import("./pages/landing_page.vue");
+import router from "./router/router";
 import { initializeApp } from "firebase/app";
+import { createPinia } from "pinia";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -19,12 +17,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [{ path: "/", name: "Home", component: landingPage }],
-});
 
 const app = createApp(App);
+
 (function () {
   const cursor = document.querySelector(".cursor-inner");
   const cursor2 = document.querySelector(".cursor-outer");
@@ -38,5 +33,4 @@ const app = createApp(App);
 })();
 
 app.component("main-btn", MainBtn);
-app.component("what-we-are-about-card", WhatWeAreAboutCard);
-app.use(router).mount("#app");
+app.use(router).use(createPinia()).mount("#app");

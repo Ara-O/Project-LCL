@@ -8,57 +8,11 @@
     <main-btn @click="registerUserPopup">Sign Up</main-btn>
   </nav>
   <section class="top-hero-section">
-    <div class="top-hero-section_left">
-      <h3>Start your Command Line learning adventure</h3>
-      <h5>Are you to become a command line bawse?</h5>
-      <main-btn>Get Started</main-btn>
-    </div>
-    <div class="top-hero-section_right">
-      <div class="welcome-code-section">
-        <div class="welcome-code-icon-1"></div>
-        <div class="welcome-code-icon-2"></div>
-        <div class="welcome-code-icon-3"></div>
-        <div class="welcome-typing-text">
-          <h5 id="element"></h5>
-          <Transition name="fade-out">
-            <h5 v-if="typingJsComplete" class="welcome-code-explanation">
-              > You find yourself in a mysterious world. It seems like you have
-              been transported to a computer file system. Tasked with finding a
-              mysterious virus wreaking havoc in the world of
-              <span style="color: #cd8cff">WindowTopia</span>, are you going to
-              be able to stop the virus before it is too late...
-            </h5>
-          </Transition>
-        </div>
-      </div>
-    </div>
+    <hero-section></hero-section>
   </section>
   <br />
   <section class="about-us">
-    <h2 style="margin-bottom: 35px">What are we about?</h2>
-    <br />
-    <article>
-      <what-we-are-about-card cardImage="brain-icon.png">
-        <template v-slot:card-title> Learn </template>
-        <template v-slot:card-description>
-          Go through an adventure while learning new commands and concepts
-        </template>
-      </what-we-are-about-card>
-      <what-we-are-about-card cardImage="boxing-icon.png">
-        <template v-slot:card-title> Compete </template>
-        <template v-slot:card-description>
-          Use multiplayer mode to play with friends in order to solve command
-          line puzzles
-        </template>
-      </what-we-are-about-card>
-      <what-we-are-about-card cardImage="battle-icon.png">
-        <template v-slot:card-title> Save WindowTopia </template>
-        <template v-slot:card-description>
-          Use multiplayer mode to play with friends in order to solve command
-          line puzzles
-        </template>
-      </what-we-are-about-card>
-    </article>
+    <about-us></about-us>
   </section>
   <br />
   <br />
@@ -80,7 +34,10 @@
         @click="cancelUserRegistration"
       />
       <div class="left">
-        <h3>Cool Beans! Let's get you learning</h3>
+        <h3 v-if="!userAlreadyHasAccount">
+          Cool Beans! Let's get you learning
+        </h3>
+        <h3 v-else>Welcome back!</h3>
         <form>
           <label for="email-address">Email: </label>
           <input
@@ -98,7 +55,17 @@
             v-model="password"
           />
         </form>
-        <h6 class="already-have-account">I already have an account</h6>
+
+        <h6
+          class="already-have-account"
+          @click="userAlreadyHasAccount = !userAlreadyHasAccount"
+        >
+          {{
+            userAlreadyHasAccount
+              ? " I already have an account"
+              : "I don't have an account"
+          }}
+        </h6>
         <main-button @click="registerUser">Sign Up</main-button>
       </div>
       <div class="right" id="cloud-parallax">
@@ -120,16 +87,18 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import Parallax from "parallax-js";
 import { registerUser as registerUserModule } from "../modules/handleRegistrationFlow";
 import "../assets/styles/landingpage.scss";
-import { ref, onMounted } from "vue";
-import Typed from "typed.js";
 import mainButton from "../components/Buttons/MainButton.vue";
-let typingJsComplete = ref(false);
+import useStore from "../store/store";
+import AboutUs from "../components/LandingPage/AboutUs.vue";
+import HeroSection from "../components/LandingPage/HeroSection.vue";
 let password = ref("");
 let email = ref("");
-
+let userAlreadyHasAccount = ref(false);
+const store = useStore();
 function registerUserPopup() {
   document.querySelector(".register-user").style.display = "flex";
   document.querySelector("html").style.overflow = "hidden";
@@ -142,38 +111,24 @@ function cancelUserRegistration() {
 }
 
 function registerUser() {
-  console.log(email.value, password.value);
-  registerUserModule(email.value, password.value)
-    .then((user) => {
-      console.log("user: ", user);
-    })
-    .catch((err) => {
-      console.log("error: ", err.message);
-    });
+  if (userAlreadyHasAccount.value == false) {
+    registerUserModule(email.value, password.value)
+      .then((user) => {
+        console.log("user: ", user);
+      })
+      .catch((err) => {
+        console.log("error: ", err.message);
+        store.hasError = true;
+        store.errorMessage = err.message;
+        setTimeout(() => (store.hasError = false), 3000);
+      });
+  } else {
+  }
 }
+
 onMounted(() => {
   var scene = document.getElementById("cloud-parallax");
   var parallaxInstance = new Parallax(scene);
   parallaxInstance.friction(0.2, 0.2);
-
-  var options = {
-    strings: [
-      "> Welcome to the start of your <span style='color: yellow'>Command Line Learning Journey</span> ✌️",
-    ],
-    typeSpeed: 40,
-    showCursor: false,
-    onComplete() {
-      typingJsComplete.value = true;
-    },
-  };
-
-  var typed = new Typed("#element", options);
-  let aboutuspoints = document.querySelectorAll(".about-us-point");
-  aboutuspoints.forEach((el) => {
-    console.log(el);
-    el.addEventListener("mouseover", function (e) {
-      console.log("e");
-    });
-  });
 });
 </script>

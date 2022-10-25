@@ -143,6 +143,10 @@ body {
 .content:hover ~ .cursor-inner {
   opacity: 0;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
 @media (prefers-color-scheme: light) {
   /* :root {
     color: #213547;

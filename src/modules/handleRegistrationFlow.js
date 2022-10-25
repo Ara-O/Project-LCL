@@ -11,10 +11,16 @@ export async function registerUser(email, password) {
 
     return successfulEntry;
   } catch (error) {
-    console.log("should be throwing err - ", error.code);
-    if (error.code === "auth/invalid-email") {
-      console.log("throwing error");
-      throw new Error("User has an invalid email");
+    console.log(error.code, " ", error.message);
+    if (
+      error.code === "auth/invalid-email" ||
+      error.code === "auth/missing-email"
+    ) {
+      throw new Error("Please re-check your email field");
+    }
+
+    if (error.code === "auth/internal-error") {
+      throw new Error("Please re-check your password field");
     }
 
     if (error.code === "auth/internal-error") {
