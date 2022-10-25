@@ -33,7 +33,7 @@
   border-radius: 121px;
   background: linear-gradient(180deg, #330969 0%, rgba(145, 121, 176, 0) 100%);
   position: absolute;
-  top: 451px;
+  top: 550px;
   right: -100px;
   transform: rotate(-12deg);
   z-index: -1;
@@ -76,7 +76,9 @@
   width: 418px;
   height: 310px;
   background: #100123;
-  box-shadow: 0px 4px 52px 11px #220242, inset -4px 12px 8px 2px #0c001c00;
+  box-shadow: 0px 4px 52px 11px #22024280,
+    inset -4px 12px 8px 2px rgb(12 0 28 / 0%);
+  //   box-shadow: 0px 4px 52px 11px #220242, inset -4px 12px 8px 2px #0c001c00;
   // box-shadow:0px 4px 52px 11px #220242, inset -4px 12px 8px 2px #0c001c;
   //   box-shadow: 0px 4px 52px 11px #220242, inset -4px 12px 8px 2px #0c001c;
   border-radius: 10px;
@@ -123,19 +125,19 @@
   }
 }
 
-.welcome-code-section::after {
-  content: "";
-  position: absolute;
-  background: #3a0067;
-  filter: blur(62px);
-  border-radius: 33px;
-  height: 33px;
-  width: 534px;
-  bottom: -42px;
-  left: -51px;
-  /* border: solid 10px orange; */
-  z-index: -1;
-}
+// .welcome-code-section::after {
+//   content: "";
+//   position: absolute;
+//   background: #3a0067;
+//   filter: blur(62px);
+//   border-radius: 33px;
+//   height: 33px;
+//   width: 534px;
+//   bottom: -42px;
+//   left: -51px;
+//   /* border: solid 10px orange; */
+//   z-index: -1;
+// }
 
 .fade-out-enter-active,
 .fade-out-leave-active {
@@ -219,15 +221,15 @@
     text-align: center;
   }
 
-  .quote-shadow {
-    background-color: #8f00ff;
-    width: 500px;
-    height: 5px;
-    border-radius: 91px;
-    margin: auto;
-    margin-top: 69px;
-    filter: blur(38px) opacity(0.8);
-  }
+  // .quote-shadow {
+  //   // background-color: #8f00ff;
+  //   width: 500px;
+  //   height: 5px;
+  //   border-radius: 91px;
+  //   margin: auto;
+  //   margin-top: 69px;
+  //   filter: blur(38px) opacity(0.8);
+  // }
 
   .get-started-btn {
     margin: auto;
@@ -263,6 +265,14 @@
     column-gap: 20px;
     position: relative;
 
+    .cancel-icon {
+      position: absolute;
+      width: 27px;
+      top: 31px;
+      right: 37px;
+      cursor: pointer;
+    }
+
     .left {
       display: flex;
       flex-direction: column;
@@ -284,7 +294,7 @@
           border-radius: 4px;
           color: black;
           box-sizing: border-box;
-          padding: 0px 25px;
+          padding: 0px 18px;
           font-family: "Poppins";
           font-size: 12px;
         }
@@ -310,7 +320,7 @@
       .cloud-icon {
         position: absolute !important;
         margin-top: 96px;
-        margin-left: -68px;
+        margin-left: -78px;
         filter: opacity(0.9);
       }
     }

@@ -5,7 +5,7 @@
     <h5>Home</h5>
     <h5>Resources</h5>
     <h5>Learn More</h5>
-    <main-btn @click="registerUser">Sign Up</main-btn>
+    <main-btn @click="registerUserPopup">Sign Up</main-btn>
   </nav>
   <section class="top-hero-section">
     <div class="top-hero-section_left">
@@ -73,17 +73,33 @@
   </section>
   <section class="register-user">
     <div class="register-user_section">
+      <img
+        src="../assets/icons/cancel-icon.png"
+        alt="Cancel Icon"
+        class="cancel-icon"
+        @click="cancelUserRegistration"
+      />
       <div class="left">
         <h3>Cool Beans! Let's get you learning</h3>
         <form>
           <label for="email-address">Email: </label>
-          <input type="text" name="" id="email-address form-field" />
+          <input
+            type="text"
+            name="Email address"
+            id="email-address form-field"
+            v-model="email"
+          />
           <br /><br />
           <label for="email-address">Password: </label>
-          <input type="text" name="" id="password form-field" />
+          <input
+            type="password"
+            name="Password"
+            id="password form-field"
+            v-model="password"
+          />
         </form>
         <h6 class="already-have-account">I already have an account</h6>
-        <main-button>Sign Up</main-button>
+        <main-button @click="registerUser">Sign Up</main-button>
       </div>
       <div class="right" id="cloud-parallax">
         <img
@@ -105,18 +121,36 @@
 
 <script setup>
 import Parallax from "parallax-js";
+import { registerUser as registerUserModule } from "../modules/handleRegistrationFlow";
 import "../assets/styles/landingpage.scss";
 import { ref, onMounted } from "vue";
 import Typed from "typed.js";
 import mainButton from "../components/Buttons/MainButton.vue";
 let typingJsComplete = ref(false);
+let password = ref("");
+let email = ref("");
 
-function registerUser() {
-  console.log("start user");
+function registerUserPopup() {
   document.querySelector(".register-user").style.display = "flex";
   document.querySelector("html").style.overflow = "hidden";
 }
 
+function cancelUserRegistration() {
+  document.querySelector(".register-user").style.display = "none";
+  document.querySelector("html").style.overflow = "auto";
+  document.querySelector("html").style.overflowX = "hidden";
+}
+
+function registerUser() {
+  console.log(email.value, password.value);
+  registerUserModule(email.value, password.value)
+    .then((user) => {
+      console.log("user: ", user);
+    })
+    .catch((err) => {
+      console.log("error: ", err.message);
+    });
+}
 onMounted(() => {
   var scene = document.getElementById("cloud-parallax");
   var parallaxInstance = new Parallax(scene);

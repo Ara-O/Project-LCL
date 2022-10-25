@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splinetool/runtime": "^0.9.106",
+    "firebase": "^9.12.1",
     "parallax-js": "^3.1.0",
     "sass": "^1.54.5",
     "typed.js": "^2.0.12",
