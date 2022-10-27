@@ -28,8 +28,8 @@
   }
 
   h3 {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 300;
   }
   h2,
   h3 {

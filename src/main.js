@@ -33,4 +33,4 @@ const app = createApp(App);
 })();
 
 app.component("main-btn", MainBtn);
-app.use(router).use(createPinia()).mount("#app");
+app.use(createPinia()).use(router).mount("#app");

@@ -61,7 +61,7 @@
           @click="userAlreadyHasAccount = !userAlreadyHasAccount"
         >
           {{
-            userAlreadyHasAccount
+            !userAlreadyHasAccount
               ? " I already have an account"
               : "I don't have an account"
           }}
@@ -88,16 +88,22 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import Parallax from "parallax-js";
-import { registerUser as registerUserModule } from "../modules/handleRegistrationFlow";
+import {
+  registerUser as registerUserModule,
+  logInUser,
+} from "../modules/handleRegistrationFlow";
 import "../assets/styles/landingpage.scss";
-import mainButton from "../components/Buttons/MainButton.vue";
 import useStore from "../store/store";
+import mainButton from "../components/Buttons/MainButton.vue";
 import AboutUs from "../components/LandingPage/AboutUs.vue";
 import HeroSection from "../components/LandingPage/HeroSection.vue";
-let password = ref("");
-let email = ref("");
+
+let password = ref("evwvewvew");
+let email = ref("ara@gmai.com");
 let userAlreadyHasAccount = ref(false);
+const router = useRouter();
 const store = useStore();
 function registerUserPopup() {
   document.querySelector(".register-user").style.display = "flex";
@@ -114,7 +120,9 @@ function registerUser() {
   if (userAlreadyHasAccount.value == false) {
     registerUserModule(email.value, password.value)
       .then((user) => {
-        console.log("user: ", user);
+        console.log("user: ", user.user.uid);
+        store.storeUserID(user.user.uid);
+        router.push("/UserDashboard");
       })
       .catch((err) => {
         console.log("error: ", err.message);
@@ -123,6 +131,18 @@ function registerUser() {
         setTimeout(() => (store.hasError = false), 3000);
       });
   } else {
+    logInUser(email.value, password.value)
+      .then((user) => {
+        console.log("user: ", user);
+        store.storeUserID(user.user.uid);
+        router.push("/UserDashboard");
+      })
+      .catch((err) => {
+        console.log("error: ", err.message);
+        store.hasError = true;
+        store.errorMessage = err.message;
+        setTimeout(() => (store.hasError = false), 3000);
+      });
   }
 }
 
