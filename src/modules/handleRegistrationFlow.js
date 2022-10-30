@@ -2,7 +2,22 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
+
+export async function userIsSignedIn() {
+  return new Promise((resolve, reject) => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        resolve(uid);
+      } else {
+        reject(false);
+      }
+    });
+  });
+}
 
 export async function logInUser(email, password) {
   const auth = getAuth();

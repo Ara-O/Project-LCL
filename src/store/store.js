@@ -22,5 +22,15 @@ export default defineStore("main", {
       console.log("paylload, ", payload);
       this.userID = payload;
     },
+
+    updateError(message) {
+      this.hasError = true;
+      this.errorMessage = message;
+    },
+
+    clearError() {
+      this.hasError = false;
+      this.errorMessage = "";
+    },
   },
 });

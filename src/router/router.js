@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 const landingPage = () => import("../pages/landing_page.vue");
 const userDashboard = () => import("../pages/user_dashboard.vue");
+const notFoundPage = () => import("../pages/page_not_found.vue");
 import useStore from "../store/store";
 
 const router = createRouter({
@@ -8,6 +9,7 @@ const router = createRouter({
   routes: [
     { path: "/", name: "Home", component: landingPage },
     { path: "/UserDashboard", name: "Dashboard", component: userDashboard },
+    { path: "/:pathMatch(.*)*", name: "NotFound", component: notFoundPage },
   ],
 });
 

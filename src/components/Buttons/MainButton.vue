@@ -1,8 +1,26 @@
 <template>
-  <button class="btn-main">
+  <router-link class="btn-main" v-if="type === 'Link'" :to="routeTo">
+    <h6 class="link-main-txt"><slot></slot></h6>
+  </router-link>
+  <button class="btn-main" v-if="type === 'Button'">
     <h6 class="btn-main-txt"><slot></slot></h6>
   </button>
 </template>
+
+<script setup>
+const props = defineProps({
+  type: {
+    type: String,
+    default: "Button",
+  },
+
+  routeTo: {
+    type: String,
+  },
+});
+
+console.log(props.routeTo);
+</script>
 
 <style scoped>
 .btn-main {
@@ -21,6 +39,12 @@
   display: flex;
   place-items: center;
   transition: all 500ms linear;
+}
+
+.link-main-txt {
+  color: white;
+  font-weight: 300;
+  font-size: 12px;
 }
 
 .btn-main:hover {

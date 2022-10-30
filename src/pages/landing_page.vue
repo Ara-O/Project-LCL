@@ -93,6 +93,7 @@ import Parallax from "parallax-js";
 import {
   registerUser as registerUserModule,
   logInUser,
+  userIsSignedIn,
 } from "../modules/handleRegistrationFlow";
 import "../assets/styles/landingpage.scss";
 import useStore from "../store/store";
@@ -126,8 +127,7 @@ function registerUser() {
       })
       .catch((err) => {
         console.log("error: ", err.message);
-        store.hasError = true;
-        store.errorMessage = err.message;
+        store.updateError(err.message);
         setTimeout(() => (store.hasError = false), 3000);
       });
   } else {
@@ -139,14 +139,25 @@ function registerUser() {
       })
       .catch((err) => {
         console.log("error: ", err.message);
-        store.hasError = true;
-        store.errorMessage = err.message;
-        setTimeout(() => (store.hasError = false), 3000);
+        store.updateError(err.message);
+        setTimeout(() => {
+          store.clearError();
+        }, 3000);
       });
   }
 }
 
 onMounted(() => {
+  userIsSignedIn()
+    .then((uid) => {
+      console.log("user has been signed in + ", uid);
+      store.storeUserID(uid);
+      router.push("/userDashboard");
+    })
+    .catch((err) => {
+      console.log("no signed in ");
+    });
+
   var scene = document.getElementById("cloud-parallax");
   var parallaxInstance = new Parallax(scene);
   parallaxInstance.friction(0.2, 0.2);
