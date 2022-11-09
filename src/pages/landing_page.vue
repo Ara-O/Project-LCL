@@ -1,88 +1,90 @@
 <template>
-  <div class="bg-circle-1"></div>
-  <div class="bg-circle-2"></div>
-  <nav class="navbar">
-    <h5>Home</h5>
-    <h5>Resources</h5>
-    <h5>Learn More</h5>
-    <main-btn @click="registerUserPopup">Sign Up</main-btn>
-  </nav>
-  <section class="top-hero-section">
-    <hero-section></hero-section>
-  </section>
-  <br />
-  <section class="about-us">
-    <about-us></about-us>
-  </section>
-  <br />
-  <br />
-  <section class="learning-quote">
-    <h4>Learning about the command line can be daunting</h4>
-    <h5>
-      We are here to make the process easier. L.C.L gamifies the process of
-      learning about the command line through a fantasy D&D type of experience
-    </h5>
-    <main-btn class="get-started-btn">Get Started</main-btn>
-    <div class="quote-shadow"></div>
-  </section>
-  <section class="register-user">
-    <div class="register-user_section">
-      <img
-        src="../assets/icons/cancel-icon.png"
-        alt="Cancel Icon"
-        class="cancel-icon"
-        @click="cancelUserRegistration"
-      />
-      <div class="left">
-        <h3 v-if="!userAlreadyHasAccount">
-          Cool Beans! Let's get you learning
-        </h3>
-        <h3 v-else>Welcome back!</h3>
-        <form>
-          <label for="email-address">Email: </label>
-          <input
-            type="text"
-            name="Email address"
-            id="email-address form-field"
-            v-model="email"
-          />
-          <br /><br />
-          <label for="email-address">Password: </label>
-          <input
-            type="password"
-            name="Password"
-            id="password form-field"
-            v-model="password"
-          />
-        </form>
+  <section id="landing-page-app">
+    <div class="bg-circle-1"></div>
+    <div class="bg-circle-2"></div>
+    <nav class="navbar">
+      <h5>Home</h5>
+      <h5>Resources</h5>
+      <h5>Learn More</h5>
+      <main-btn @click="registerUserPopup">Sign Up</main-btn>
+    </nav>
+    <section class="top-hero-section">
+      <hero-section></hero-section>
+    </section>
+    <br />
+    <section class="about-us">
+      <about-us></about-us>
+    </section>
+    <br />
+    <br />
+    <section class="learning-quote">
+      <h4>Learning about the command line can be daunting</h4>
+      <h5>
+        We are here to make the process easier. L.C.L gamifies the process of
+        learning about the command line through a fantasy D&D type of experience
+      </h5>
+      <main-btn class="get-started-btn">Get Started</main-btn>
+      <div class="quote-shadow"></div>
+    </section>
+    <section class="register-user">
+      <div class="register-user_section">
+        <img
+          src="../assets/icons/cancel-icon.png"
+          alt="Cancel Icon"
+          class="cancel-icon"
+          @click="cancelUserRegistration"
+        />
+        <div class="left">
+          <h3 v-if="!userAlreadyHasAccount">
+            Cool Beans! Let's get you learning
+          </h3>
+          <h3 v-else>Welcome back!</h3>
+          <form>
+            <label for="email-address">Email: </label>
+            <input
+              type="text"
+              name="Email address"
+              id="email-address form-field"
+              v-model="email"
+            />
+            <br /><br />
+            <label for="email-address">Password: </label>
+            <input
+              type="password"
+              name="Password"
+              id="password form-field"
+              v-model="password"
+            />
+          </form>
 
-        <h6
-          class="already-have-account"
-          @click="userAlreadyHasAccount = !userAlreadyHasAccount"
-        >
-          {{
-            !userAlreadyHasAccount
-              ? " I already have an account"
-              : "I don't have an account"
-          }}
-        </h6>
-        <main-button @click="registerUser">Sign Up</main-button>
+          <h6
+            class="already-have-account"
+            @click="userAlreadyHasAccount = !userAlreadyHasAccount"
+          >
+            {{
+              !userAlreadyHasAccount
+                ? " I already have an account"
+                : "I don't have an account"
+            }}
+          </h6>
+          <main-button @click="registerUser">Sign Up</main-button>
+        </div>
+        <div class="right" id="cloud-parallax">
+          <img
+            src="../assets/icons/rocket-icon.png"
+            alt="Rocket icon"
+            class="rocket-icon"
+            data-depth="0.2"
+          />
+          <img
+            src="../assets/icons/cloud-icon.png"
+            alt="Cloud icon"
+            class="cloud-icon"
+            data-depth="0.6"
+          />
+        </div>
       </div>
-      <div class="right" id="cloud-parallax">
-        <img
-          src="../assets/icons/rocket-icon.png"
-          alt="Rocket icon"
-          class="rocket-icon"
-          data-depth="0.2"
-        />
-        <img
-          src="../assets/icons/cloud-icon.png"
-          alt="Cloud icon"
-          class="cloud-icon"
-          data-depth="0.6"
-        />
-      </div>
-    </div>
+    </section>
   </section>
 </template>
 

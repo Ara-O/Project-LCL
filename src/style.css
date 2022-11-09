@@ -85,14 +85,9 @@ button:focus-visible {
   padding: 2em;
 }
 
-#app {
-  max-width: 1010px;
-  margin: 0 auto;
-  /* text-align: center; */
-}
-
 body {
   /* cursor: none; */
+  margin: 0px;
 }
 /* 
 .cursor{

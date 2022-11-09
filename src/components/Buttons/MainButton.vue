@@ -1,13 +1,19 @@
 <template>
-  <router-link class="btn-main" v-if="type === 'Link'" :to="routeTo">
+  <router-link
+    class="btn-main"
+    v-if="type === 'Link'"
+    :to="routeTo"
+    @click="click"
+  >
     <h6 class="link-main-txt"><slot></slot></h6>
   </router-link>
-  <button class="btn-main" v-if="type === 'Button'">
+  <button class="btn-main" v-if="type === 'Button'" @click="click">
     <h6 class="btn-main-txt"><slot></slot></h6>
   </button>
 </template>
 
 <script setup>
+const emit = defineEmits(["click"]);
 const props = defineProps({
   type: {
     type: String,
@@ -19,6 +25,9 @@ const props = defineProps({
   },
 });
 
+function click() {
+  emit("click");
+}
 console.log(props.routeTo);
 </script>
 
