@@ -10,11 +10,17 @@
         </h5>
         <main-btn>Continue</main-btn>
       </div>
+      <!-- <img src="../assets/icons/test4.png" alt="Glowing Earth" class="test" /> -->
+    </section>
+    <section class="module-section">
+      <h3>Modules</h3>
+      <module icon="plant-icon"></module>
     </section>
   </section>
 </template>
 
 <script setup>
+import module from "../components/UserDashboard/Module.vue";
 import navBar from "../components/UserDashboard/Navbar.vue";
 </script>
 
@@ -23,15 +29,24 @@ import navBar from "../components/UserDashboard/Navbar.vue";
 body {
   margin: 0px;
 }
+
+.test {
+  width: 500px;
+  height: 29px;
+  position: relative;
+  top: -115px;
+  transform: rotate(0.9deg);
+}
 .main-dashboard-top {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
   box-sizing: border-box;
 
   .introduction {
     height: 460px;
-    padding: 100px 161px;
+    padding: 100px 161px 0px;
     display: flex;
 
     background: linear-gradient(180deg, rgb(6 0 12 / 93%), transparent);
@@ -53,6 +68,19 @@ body {
       margin-bottom: 10px;
       font-weight: 500;
     }
+  }
+}
+
+.module-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 40px;
+  h3 {
+    // font-weight: 400;
+    font-weight: 500;
+    font-size: 16px;
   }
 }
 </style>
